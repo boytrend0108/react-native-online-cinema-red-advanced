@@ -5,14 +5,7 @@ import { router } from 'expo-router'
 
 const Auth = () => {
 	return (
-		<View
-			style={{
-				flex: 1,
-				backgroundColor: '#090909',
-				justifyContent: 'center',
-				alignItems: 'center'
-			}}
-		>
+		<View className='flex-1 bg-red-500 justify-center items-center'>
 			<Text style={{ color: 'white', fontSize: 24, marginBottom: 20 }}>
 				Auth
 			</Text>
