@@ -19,6 +19,10 @@ module.exports = {
 		extend: {
 			zIndex: {
 				1: 1
+			},
+			borderRadius: {
+				'2xl': '16px',
+				'3xl': '24px'
 			}
 		}
 	},
