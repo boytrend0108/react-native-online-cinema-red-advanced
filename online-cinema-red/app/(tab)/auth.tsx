@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Pressable, Text, View } from 'react-native'
 
-import { router } from 'expo-router'
-
+import { useAuth } from '@/hooks/useAuth'
 import Loader from '@/shared/componets/Loader'
 import Button from '@/shared/componets/button/Button'
 import AuthFields from '@/shared/componets/form-elements/auth-fieds/AuthFields'
@@ -11,6 +10,7 @@ import { IAuthFormData } from '@/shared/types/auth.interface'
 
 const Auth = () => {
 	const [isReg, setIsReg] = useState(false)
+	const { setUser } = useAuth()
 
 	const { handleSubmit, reset, control } = useForm<IAuthFormData>({
 		mode: 'onChange'
@@ -19,6 +19,17 @@ const Auth = () => {
 	const onSubmit = (data: IAuthFormData) => {
 		const { email, password } = data
 		console.log(data)
+		
+		// Simulate successful login and set user
+		// In a real app, you would make an API call here
+		setUser({
+			_id: '1',
+			email: email,
+			password: password,
+			createdAt: new Date().toISOString(),
+			isAdmin: false
+		})
+		
 		reset()
 	}
 
