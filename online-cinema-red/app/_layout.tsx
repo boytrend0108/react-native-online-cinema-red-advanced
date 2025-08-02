@@ -3,12 +3,17 @@ import 'react-native-reanimated'
 import { Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 
+import { useAuth } from '@/hooks/useAuth'
+import AuthProvider from '@/providers/auth/AuthProvider'
+
 import '../global.css'
 
 export default function RootLayout() {
+	const { user } = useAuth()
+
 	return (
-		<>
-			<Stack initialRouteName='home'>
+		<AuthProvider>
+			<Stack initialRouteName={user ? 'home' : 'auth'}>
 				<Stack.Screen
 					name='home'
 					options={{
@@ -25,7 +30,8 @@ export default function RootLayout() {
 					}}
 				/>
 			</Stack>
+
 			<StatusBar style='auto' />
-		</>
+		</AuthProvider>
 	)
 }
