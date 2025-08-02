@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pressable, PressableProps, Text } from 'react-native'
+import { Pressable, PressableProps, Text, View } from 'react-native'
 
 import { Feather } from '@expo/vector-icons'
 
@@ -18,23 +18,29 @@ interface Props extends PressableProps {
 
 const Button: React.FC<Props> = ({ className, icon, children, ...rest }) => {
 	return (
-		<Pressable className={cn('self-center w-full', className)} {...rest}>
+		<Pressable className={cn('w-full border rounded-lg', className)} {...rest}>
 			<LinearGradient
 				colors={['#dc3f41', '#a6282b']}
-				className='w-full py-3 px-8'
 				style={{
-					borderRadius: 16,
-					display: 'flex',
-					flexDirection: icon ? 'row' : 'column',
+					width: '100%',
+					paddingVertical: 12,
+					paddingHorizontal: 32,
 					alignItems: 'center',
 					justifyContent: 'center',
-					gap: icon ? 8 : 0,
-					paddingBlock: 12,
-					paddingHorizontal: 16
+					borderRadius: 8
 				}}
 			>
-				{icon && <Feather name={icon} size={18} color='#fff' />}
-				<Text className='text-white'>{children}</Text>
+				<View style={{ flexDirection: 'row', alignItems: 'center' }}>
+					{icon && (
+						<Feather
+							name={icon}
+							size={18}
+							color='#fff'
+							style={{ marginRight: 8 }}
+						/>
+					)}
+					<Text className='text-white'>{children}</Text>
+				</View>
 			</LinearGradient>
 		</Pressable>
 	)

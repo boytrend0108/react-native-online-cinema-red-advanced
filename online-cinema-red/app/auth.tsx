@@ -4,8 +4,9 @@ import { Pressable, Text, View } from 'react-native'
 
 import { router } from 'expo-router'
 
-import Button from '@/shared/componets/Button/Button'
 import Loader from '@/shared/componets/Loader'
+import Button from '@/shared/componets/button/Button'
+import AuthFields from '@/shared/componets/form-elements/auth-fieds/AuthFields'
 import { IAuthFormData } from '@/shared/types/auth.interface'
 
 const Auth = () => {
@@ -37,7 +38,17 @@ const Auth = () => {
 				<Loader />
 			) : (
 				<View>
-					<Button icon='film' onPress={handleSubmit(onSubmit)}>
+					<AuthFields
+						control={control}
+						isPassRequired={true}
+						className='mb-4'
+					/>
+
+					<Button
+						icon='film'
+						onPress={handleSubmit(onSubmit)}
+						className='px-12'
+					>
 						Go to Movies
 					</Button>
 
